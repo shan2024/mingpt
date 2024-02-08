@@ -126,7 +126,6 @@ class Block(nn.Module):
     def forward(self, x, mask_tokens=None):
         x =  self.attn(self.ln_1(x), mask_tokens=mask_tokens)
         x =  self.mlpf(self.ln_2(x))
-        print("hello")
         return x
 
 class GPT(nn.Module):
