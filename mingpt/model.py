@@ -124,8 +124,9 @@ class Block(nn.Module):
         self.mlpf = lambda x: m.dropout(m.c_proj(m.act(m.c_fc(x)))) # MLP forward
 
     def forward(self, x, mask_tokens=None):
-        x = x + self.attn(self.ln_1(x), mask_tokens=mask_tokens)
-        x = x + self.mlpf(self.ln_2(x))
+        x =  self.attn(self.ln_1(x), mask_tokens=mask_tokens)
+        x =  self.mlpf(self.ln_2(x))
+        print("hello")
         return x
 
 class GPT(nn.Module):
